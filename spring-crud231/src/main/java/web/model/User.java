@@ -3,7 +3,6 @@ package web.model;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import org.springframework.context.annotation.Bean;
 
 import javax.persistence.*;
 
