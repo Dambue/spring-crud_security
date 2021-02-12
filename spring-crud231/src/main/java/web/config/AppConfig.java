@@ -1,10 +1,8 @@
 package web.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -20,9 +18,6 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan(value = "web")
 public class AppConfig {
-
-    @Autowired
-    private Environment env;
 
     @Bean
     public DataSource getDataSource() {
@@ -48,7 +43,7 @@ public class AppConfig {
         LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         localContainerEntityManagerFactoryBean.setJpaVendorAdapter(getJpaVendorAdapter());
         localContainerEntityManagerFactoryBean.setDataSource(getDataSource());
-        localContainerEntityManagerFactoryBean.setPersistenceUnitName("myJpaPersistenceUnit");
+        localContainerEntityManagerFactoryBean.setPersistenceUnitName("jpaPersistenceUnit");
         localContainerEntityManagerFactoryBean.setPackagesToScan("web");
         localContainerEntityManagerFactoryBean.setJpaProperties(getProperties());
         return localContainerEntityManagerFactoryBean;
@@ -56,12 +51,12 @@ public class AppConfig {
 
     @Bean
     public JpaVendorAdapter getJpaVendorAdapter() {
-        JpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        return adapter;
+        JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
+        return jpaVendorAdapter;
     }
 
     @Bean
-    public PlatformTransactionManager txManager() {
+    public PlatformTransactionManager getPlatformTransactionManager() {
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager(
                 getEntityManagerFactoryBean().getObject());
         return jpaTransactionManager;

@@ -29,6 +29,7 @@
       <scope>test</scope>
     </dependency>
 
+
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -108,6 +109,20 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
       <version>5.4.27.Final</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>5.4.2</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>5.4.2</version>
     </dependency>
 
 

@@ -13,13 +13,18 @@
     <br/>
     <label for="lastName">Enter surname: </label>
     <input type="text" th:field="*{lastName}" id="lastName"/>
-    <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">lastName Error</div>
+    <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">LastName Error</div>
     <br/>
     <label for="age">Enter age: </label>
     <input type="number" th:field="*{age}" id="age"/>
     <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
     <br/>
+    <label for="password">Enter password: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+    <br/>
     <input type="submit" value="Create!"/>
+    <a href="/logout">Logout</a>
 </form>
 
 </body>

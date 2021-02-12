@@ -1,7 +1,6 @@
 package web.controller;
 
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,11 +9,14 @@ import web.model.User;
 import web.service.UserService;
 
 @Controller
-@RequestMapping("/users")
-public class UsersController {
+@RequestMapping("/admin")
+public class AdminController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public AdminController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping()
     public String index(Model model) {
@@ -39,7 +41,7 @@ public class UsersController {
             return "new";
         }
         userService.save(user);
-        return "redirect:/users";
+        return "redirect:/admin";
     }
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") Long id, Model model) {
@@ -54,13 +56,12 @@ public class UsersController {
             return "edit";
         }
         userService.update(id,user);
-        return "redirect:/users";
+        return "redirect:/admin";
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") Long id) {
         userService.delete(id);
-        return "redirect:/users";
+        return "redirect:/admin";
     }
-
 }
